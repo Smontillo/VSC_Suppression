@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-plt.rcParams.update({'font.size': 19})
-plt.rcParams.update({'font.family': "times"})
+plt.rcParams['font.size'] = 19
+plt.rcParams['font.family'] = "times"
 #====================================
 # CONSTANTS
 #====================================

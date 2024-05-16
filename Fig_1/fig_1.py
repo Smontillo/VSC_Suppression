@@ -5,8 +5,8 @@ from scipy.signal import find_peaks
 from scipy.signal import argrelextrema
 from scipy.interpolate import interp1d
 from scipy.optimize import curve_fit
-plt.rcParams.update({'font.size': 19})
-plt.rcParams.update({'font.family': "times"})
+plt.rcParams['font.size'] = 19
+plt.rcParams['font.family'] = "times"
 cmtoau = 4.556335e-06 
 #====================================
 
@@ -61,7 +61,6 @@ ax.set_xticks([-50,0,50])
 ax.tick_params(left = True , labelleft = False) 
 ax.tick_params(right = True , labelright = False) 
 ax.set_xlabel(r'$\mathcal{Q}$ (a.u.)')
-ax.text(30,1290,r"$\omega_Q$", fontsize = 40)
 plt.ylabel('Energy ($cm^{-1}$)')
 plt.savefig('./Fig_1b.pdf', dpi = 500, bbox_inches='tight')
 plt.close()
@@ -89,7 +88,6 @@ ax.set_xticks([-50,0,50])
 ax.tick_params(left = True , labelleft = False) 
 ax.tick_params(right = True , labelright = False) 
 ax.set_xlabel(r'$\mathcal{Q}$ (a.u.)')
-ax.text(30,1290,r"$\omega_Q$", fontsize = 40)
 plt.ylabel('Energy ($cm^{-1}$)')
 plt.savefig('./Fig_1c.pdf', dpi = 500, bbox_inches='tight')
 plt.close()

@@ -5,8 +5,8 @@ from scipy.signal import find_peaks
 from scipy.signal import argrelextrema
 from scipy.interpolate import interp1d
 from scipy.optimize import curve_fit
-plt.rcParams.update({'font.size': 19})
-plt.rcParams.update({'font.family': "times"})
+plt.rcParams['font.size'] = 19
+plt.rcParams['font.family'] = "times"
 #====================================
 
 #====================================
@@ -107,7 +107,6 @@ plt.close()
 data_out = np.loadtxt('./rates_outside_cav.txt')
 time_out = data_out[:,0]
 pop_out = data_out[:,1]
-print(time_out.shape, pop_out.shape)
 param, cov = curve_fit(exp_decay, time_out, pop_out, p0 = [6E-4])
 k0 = param[0]
 

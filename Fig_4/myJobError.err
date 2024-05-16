@@ -1,3 +1,0 @@
-slurmstepd: error: execve(): fig_4.py: Permission denied
-srun: error: bhg0001: task 0: Exited with exit code 13
-srun: Terminating job step 24777955.0

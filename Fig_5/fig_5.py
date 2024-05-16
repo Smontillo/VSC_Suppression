@@ -5,8 +5,8 @@ from scipy.signal import find_peaks
 from scipy.signal import argrelextrema
 from scipy.interpolate import interp1d
 from scipy.optimize import curve_fit
-plt.rcParams.update({'font.size': 19})
-plt.rcParams.update({'font.family': "times"})
+plt.rcParams['font.size'] = 19
+plt.rcParams['font.family'] = "times"
 #====================================
 
 #====================================
