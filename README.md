@@ -1,6 +1,6 @@
 # VSC Suppression
 
-*Update $\Longrightarrow$ July 11, 2024*
+*Update* $\Longrightarrow$ *July 11, 2024*
 
 Open source code and data for the recent paper **"Theory of Resonant Suppression in Vibrational Polariton Chemistry"**.
 
