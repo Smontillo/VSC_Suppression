@@ -94,7 +94,7 @@ wc = 1189.7 * cmtoau
 ηc = ΩR / np.sqrt(2 * N * wc) 
 
 #====================================
-# Fig S8
+# Fig S9
 #====================================
 w = np.arange(1E-5,5000,0.015) * cmtoau
 life = np.loadtxt('./Lifetime_Rabi_100.txt')
@@ -123,5 +123,5 @@ ax.set_yticks([0.8,0.9,1.0])
 ax.set_xticks([0, 500, 1000, 1500, 2000])
 ax.legend(loc=1, frameon = False, fontsize = 14)
 
-plt.savefig('./Fig_S8.pdf', dpi = 500, bbox_inches='tight')
+plt.savefig('./Fig_S9.pdf', dpi = 500, bbox_inches='tight')
 plt.close()

@@ -10,7 +10,7 @@ Folders of Fig. 1 to Fig 4. contain the input files used for the HEOM simulation
 
 Images that make use of the Effective Spectral Density (Presented in Supplementary Note 5 fo the SI) and the Fermi's Golden Rule (Equation 13 to Equation 15 of the main text) contain the code for calculating the respective properties in the plotting files.
 
-# ================================================================
+============================================
 
 The HEOM code (no provided here for copyright reasons) can be found at:
 https://github.com/hou-dao/OpenQuant
