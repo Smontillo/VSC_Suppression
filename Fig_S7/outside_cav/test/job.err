@@ -1,0 +1,16 @@
+[bhd0001:19802] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[bhd0001:19780] mca_base_component_repository_open: unable to open mca_oob_ud: libosmcomp.so.3: cannot open shared object file: No such file or directory (ignored)
+[bhd0001:19780] mca_base_component_repository_open: unable to open mca_btl_openib: librdmacm.so.1: cannot open shared object file: No such file or directory (ignored)
+/software/anaconda3/2020.11/lib/python3.8/site-packages/numba/core/ir_utils.py:2031: NumbaPendingDeprecationWarning: [1m
+Encountered the use of a type that is scheduled for deprecation: type 'reflected list' found for argument 'std_comb' of function 'dev_scan'.
+
+For more information visit https://numba.pydata.org/numba-doc/latest/reference/deprecation.html#deprecation-of-reflection-for-list-and-set-types
+[1m
+File "../../../../../../../../../var/spool/slurm/job25132749/slurm_script", line 92:[0m
+[1m@nb.jit(nopython=True, fastmath=True)
+[1mdef dev_scan(std_comb, TaskArray, omega_s, Psis, Ps, Nq, dw, samples):
+[0m[1m^[0m[0m
+[0m
+  warnings.warn(NumbaPendingDeprecationWarning(msg, loc=loc))
+/software/anaconda3/2020.11/lib/python3.8/site-packages/numpy/core/_asarray.py:83: ComplexWarning: Casting complex values to real discards the imaginary part
+  return array(a, dtype, copy=False, order=order)
