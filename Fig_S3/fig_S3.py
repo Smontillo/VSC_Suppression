@@ -5,7 +5,7 @@ plt.rcParams['font.size'] = 19
 plt.rcParams['font.family'] = "times"
 cmtoau = 4.556335e-06 
 fstoau = 41.341                           # 1 fs = 41.341 a.u.
-pstoau = 41.341 * 1000                           # 1 fs = 41.341 a.u.
+pstoau = 41.341 * 1000                    # 1 fs = 41.341 a.u.
 #====================================
 
 #====================================
@@ -15,6 +15,28 @@ def exp_decay(x, Γ):
     PE = 0.5 # Population at equilibrium
     PI = 0.99669031 # Initial population
     return (PI - PE) * np.exp(-x * Γ) + PE
+#====================================
+
+#====================================
+def rate_func(X, kf, kb):
+    x1, x2 = X
+    return kf * x1 - kb * x2 
+#====================================
+
+#====================================
+def fit_rate(time, popL, popR):
+    points = len(time)
+    pL = popL
+    pR = popR
+    PL = np.zeros(points - 1)
+    PR = np.zeros(points - 1)
+    for k in range(1, points):
+        PL[k-1] = np.trapz(pL[:k], time[:k])
+        PR[k-1] = np.trapz(pR[:k], time[:k])
+    X = (PL, PR)
+    popt, pcov = curve_fit(rate_func, X, pR[1:], bounds = (0, [1, 1]))
+    return popt[0], popt[1], PL, PR
+#====================================
 
 #====================================
 # Population data
@@ -81,14 +103,16 @@ plt.close()
 #====================================
 data = np.loadtxt('./pop_Cj_0.1_wc_1200_Rabi_60cm.txt')
 time = data[:,0]
-pop = data[:,1]
+popL = data[:,1]
+popR = data[:,2]
 
-rates, covariance = curve_fit(exp_decay, time, pop, p0 = [6E-4])
+kf, kb, PL, PR = fit_rate(time, popL, popR)
+fit_pop = kf * PL - kb * PR
 
 fig, ax = plt.subplots(figsize = (4.5,4.5))
 
-ax.plot(time/1000,pop, lw = 3.3, label = 'HEOM', c = 'dodgerblue')
-ax.plot(time/1000,exp_decay(time,rates), lw = 2, ls = '--', label = 'Fitting', c = 'r')
+ax.plot(time/1000,popL, lw = 3.3, label = 'HEOM', c = 'dodgerblue')
+ax.plot(time[1:]/1000,1 - fit_pop, lw = 2, ls = '--', label = 'Fitting', c = 'r')
 ax.set_ylabel('Population')
 ax.set_xlabel(r'Time (ps)')
 ax.set_yticks([0.5, 0.75, 1])
@@ -103,16 +127,17 @@ plt.close()
 wQ = 1385.98 * cmtoau
 wc = 1385.98 * cmtoau
 data = np.loadtxt('./pop_Cj_0.1_wc_1385_Rabi_100cm.txt')
-time = data[0:,0]
-pop = data[0:,1]
+time = data[:,0]
+popL = data[:,1]
+popR = data[:,2]
 
-rates, covariance = curve_fit(exp_decay, time, pop, p0 = [6E-4])
+kf, kb, PL, PR = fit_rate(time, popL, popR)
+fit_pop = kf * PL - kb * PR
 
 fig, ax = plt.subplots(figsize = (4.5,4.5))
 
-# ax.plot(time,pop[:,0])
-ax.plot(time/1000,pop, lw = 3.3, label = 'HEOM', c = 'dodgerblue')
-ax.plot(time/1000,exp_decay(time,rates), lw = 2, ls = '--', label = 'Fitting', c = 'black')
+ax.plot(time/1000,popL, lw = 3.3, label = 'HEOM', c = 'dodgerblue')
+ax.plot(time[1:]/1000,1 - fit_pop, lw = 2, ls = '--', label = 'Fitting', c = 'black')
 ax.set_ylabel('Population')
 ax.set_xlabel(r'Time (ps)')
 ax.set_yticks([0.5, 0.75, 1])
